@@ -54,6 +54,7 @@ module "annotate-sa" {
   cluster_name     = var.cluster_name
   cluster_location = var.location
   project_id       = var.project_id
+  additional_components = []
 
   kubectl_create_command  = "kubectl annotate --overwrite sa -n ${local.output_k8s_namespace} ${local.k8s_given_name} iam.gke.io/gcp-service-account=${local.gcp_sa_email}"
   kubectl_destroy_command = "kubectl annotate sa -n ${local.output_k8s_namespace} ${local.k8s_given_name} iam.gke.io/gcp-service-account-"
